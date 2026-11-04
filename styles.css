@@ -288,3 +288,66 @@ input:focus, select:focus, textarea:focus {
   .reveal { opacity: 1; transform: none; transition: none; }
   * { transition: none !important; }
 }
+
+/* ==========================================================
+   Version 2 — pricing & WhatsApp
+   ========================================================== */
+:root { --wa: #11806f; --wa-dark: #0c6457; }
+
+/* Pricing */
+.billing-toggle {
+  display: flex; width: max-content; margin: -12px auto 36px;
+  padding: 4px; border-radius: 999px; background: var(--sand-100); border: 1px solid var(--line);
+}
+.billing-toggle button {
+  font: inherit; font-weight: 600; border: 0; background: transparent; color: var(--muted);
+  padding: 0.55em 1.4em; border-radius: 999px; cursor: pointer;
+}
+.billing-toggle button.active { background: var(--teal-900); color: var(--white); }
+
+.plans { align-items: stretch; }
+.plan { display: flex; flex-direction: column; position: relative; }
+.plan .ticks { flex: 1; }
+.plan.featured { border: 2px solid var(--terracotta); }
+.badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--terracotta); color: var(--white); font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin: 0; white-space: nowrap;
+}
+.price { margin: 8px 0 2px; color: var(--teal-900); }
+.price .amount { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.02em; }
+.price .per { color: var(--muted); margin-left: 4px; }
+.price-note { font-size: 0.9rem; color: var(--teal-500); font-weight: 600; min-height: 1.5em; }
+.pricing-footnote { text-align: center; margin: 28px auto 0; max-width: 620px; }
+
+/* WhatsApp */
+.wa-icon { width: 1.25em; height: 1.25em; fill: currentColor; flex-shrink: 0; }
+.btn-whatsapp {
+  background: var(--wa); border-color: var(--wa);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-whatsapp:hover { background: var(--wa-dark); border-color: var(--wa-dark); }
+.form-actions { display: grid; grid-template-columns: 1.3fr 1fr; gap: 12px; }
+.wa-link {
+  display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 18px;
+  font-weight: 600; color: var(--wa); text-decoration: none;
+}
+.wa-link:hover { text-decoration: underline; }
+.wa-float {
+  position: fixed; right: 20px; bottom: 20px; z-index: 60;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--wa); color: var(--white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.wa-float:hover { background: var(--wa-dark); transform: scale(1.06); }
+.wa-float .wa-icon { width: 30px; height: 30px; }
+
+@media (max-width: 960px) {
+  .plans { gap: 32px; }
+}
+@media (max-width: 520px) {
+  .form-actions { grid-template-columns: 1fr; }
+  .wa-float { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+}
